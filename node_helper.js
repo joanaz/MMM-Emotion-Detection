@@ -24,7 +24,11 @@ module.exports = NodeHelper.create({
         });
 
       } else if (message.hasOwnProperty('error')) {
-        console.log("[" + self.name + "] " + message.message)
+        console.log("[" + self.name + "] " + message.error.err_msg)
+        self.sendSocketNotification('user', {
+
+          error: message.error.err_msg
+        });
       }
     });
 
